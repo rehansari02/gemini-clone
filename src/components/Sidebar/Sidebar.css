@@ -14,10 +14,12 @@
 
 .sidebar.open {
   width: 240px;
+  z-index: 1000;
 }
 
 .sidebar.closed {
   width: 70px;
+  z-index: 0;
 }
 
 /* ------------------ Top & Bottom Sections ------------------ */
