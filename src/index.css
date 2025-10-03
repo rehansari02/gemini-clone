@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html,body{
+    height: 100%;
+    width: 100%;
+}
+body {
+  font-family: "Plus Jakarta Sans", "Poppins", "Montserrat", sans-serif;
+}
+
+
+#root{
+    height: 100vh;
+  display: flex;
+    background-color: #1B1C1D;
+    color: white;
+}
+

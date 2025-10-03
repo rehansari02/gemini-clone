@@ -1,0 +1,461 @@
+/* =======================
+   MAINBAR CONTAINER
+======================= */
+.mainbar {
+  flex: 1;
+  height: 100vh;
+  background-color: #1B1C1D;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+}
+
+/* =======================
+   THIN SCROLLBAR FOR MAINBAR
+======================= */
+.mainbar::-webkit-scrollbar {
+  width: 6px; /* patla scrollbar */
+}
+
+.mainbar::-webkit-scrollbar-track {
+  background: #1B1C1D; /* same as mainbar background */
+  border-radius: 3px;
+}
+
+.mainbar::-webkit-scrollbar-thumb {
+  background: #00c3ff; /* scrollbar color */
+  border-radius: 3px;
+}
+
+.mainbar::-webkit-scrollbar-thumb:hover {
+  background: #ff6b6b; /* hover effect */
+}
+
+
+/* =======================
+   NAVBAR
+======================= */
+.mainbar nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2A2B2E;
+  padding: 14px 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+.mainbar nav h2 {
+  margin: 0;
+  font-size: 26px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #00c3ff, #ff6b6b, #00c3ff, #ff6b6b);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.mainbar nav img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #444;
+  transition: transform 0.2s ease;
+}
+
+.mainbar nav img:hover {
+  transform: scale(1.1);
+}
+
+/* =======================
+   MAIN CONTAINER
+======================= */
+.main-container {
+  flex: 1;
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-bottom: 160px; /* for fixed bottom input */
+}
+
+/* =======================
+   GREETING
+======================= */
+.greet {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.greet p {
+  margin: 8px 0;
+  font-size: 20px;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+.greet span {
+  font-weight: 700;
+  font-size: 45px;
+  background: linear-gradient(90deg, #00c3ff, #ff6b6b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =======================
+   CARDS
+======================= */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 24px;
+}
+
+.card {
+  height: 180px;
+  background: linear-gradient(135deg, #00c3ff, #ff6b6b);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+  line-height: 1.4;
+}
+
+.card svg {
+  font-size: 28px;
+  color: #fff;
+  align-self: flex-end;
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+}
+
+/* =======================
+   RESULT BUBBLES
+======================= */
+.result-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 800px;
+  margin: 0 ;
+}
+
+.result-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.result-title img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #444;
+}
+
+.result-title p {
+  margin: 0;
+  font-weight: 600;
+  color: #fff;
+  font-size: 16px;
+}
+
+.result-data {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+/* Loader Container */
+.loader {
+  display: flex;
+  flex-direction: column; /* lines vertically stack hongi */
+  gap: 6px; /* lines ke beech space */
+  width: 100%;
+}
+
+/* Each line */
+.loader hr {
+  width: 0%; /* start from 0% */
+  height: 4px; /* line thickness */
+  background-color: #f6f7f8;
+  background:linear-gradient(to right, #9ed7ff,#fff,#9ed7ff);
+  border: none;
+  border-radius: 2px;
+  animation: loadLine 1s forwards infinite;
+}
+
+/* Sequential animation using delay */
+.loader hr:nth-child(1) {
+  animation-delay: 0s;
+}
+.loader hr:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.loader hr:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+/* Animation: full width expansion */
+@keyframes loadLine {
+  0% {
+    width: 0%;
+    opacity: 0.5;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+
+
+.result-bubble {
+  background-color: #2A2B2E;
+  color: #fff;
+  padding: 14px 18px;
+  border-radius: 16px;
+  max-width: 70%;
+  font-size: 16px;
+  line-height: 1.5;
+  word-wrap: break-word;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.result-bubble.loading {
+  font-style: italic;
+  color: rgba(255,255,255,0.7);
+}
+
+.result-data img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #444;
+}
+
+.result-data {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.result-data img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.result-text p {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.result-text h3 {
+  font-weight: 700;
+  font-size: 18px;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  color: #00c3ff;
+}
+
+.result-text li {
+  margin-left: 20px;
+  margin-bottom: 6px;
+  list-style-type: disc;
+  color: #fff;
+}
+
+
+/* =======================
+   BOTTOM INPUT BOX
+======================= */
+.main-bottom {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  z-index: 999;
+}
+
+.text-box {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #2A2B2E;
+  padding: 10px 16px;
+  border-radius: 12px;
+}
+
+.text-box textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 16px;
+  resize: none;
+  max-height: 120px;
+  overflow-y: auto;
+  min-height: 36px;
+}
+
+.text-box textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.text-box svg {
+  font-size: 24px;
+  color: #00c3ff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.text-box svg:hover {
+  transform: scale(1.1);
+}
+
+.bottom-info {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+  text-align: center;
+  max-width: 600px;
+}
+
+/* =======================
+   IMAGES (GENERAL)
+======================= */
+img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #444;
+  transition: transform 0.2s ease;
+}
+
+/* =======================
+   RESPONSIVE
+======================= */
+@media (max-width: 768px) {
+  .mainbar {
+    padding: 15px 20px;
+  }
+
+  .mainbar nav h2 {
+    font-size: 22px;
+  }
+
+  .mainbar nav img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .greet span {
+    font-size: 32px;
+  }
+
+  .greet p {
+    font-size: 16px;
+  }
+
+  .cards {
+    display: none;
+  }
+
+  .main-bottom {
+    width: 100%;
+    bottom: 15px;
+    padding: 0 15px;
+  }
+
+  .text-box {
+    max-width: 100%;
+  }
+
+  .text-box textarea {
+    font-size: 14px;
+  }
+
+  .text-box svg {
+    font-size: 22px;
+  }
+
+  .bottom-info {
+    font-size: 11px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mainbar nav h2 {
+    font-size: 20px;
+  }
+
+  .greet span {
+    font-size: 28px;
+  }
+
+  .greet p {
+    font-size: 14px;
+  }
+
+  .text-box textarea {
+    font-size: 14px;
+  }
+
+  .bottom-info {
+    font-size: 10px;
+  }
+
+  .result-bubble {
+    max-width: 95%;
+    font-size: 14px;
+  }
+
+  .result-title img, .result-data img {
+    width: 28px;
+    height: 28px;
+  }
+}
