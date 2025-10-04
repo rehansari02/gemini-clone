@@ -3,13 +3,14 @@
 ======================= */
 .mainbar {
   flex: 1;
-  height: 100vh; /* viewport height fix */
+  height: 100vh;
   background-color: #1B1C1D;
   padding: 20px 30px;
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
   transition: all 0.3s ease;
+  z-index: 1;
 }
 
 /* =======================
@@ -23,8 +24,6 @@
   padding: 14px 24px;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  animation: navSlide 0.8s ease forwards;
-  opacity: 0;
 }
 
 .mainbar nav h2 {
@@ -35,8 +34,6 @@
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientMove 3s ease infinite, fadeInText 1s ease forwards;
-  opacity: 0;
 }
 
 .mainbar nav img {
@@ -47,47 +44,13 @@
   cursor: pointer;
   border: 2px solid #444;
   transition: transform 0.2s ease;
-  animation: fadeInImg 1.2s ease forwards;
-  opacity: 0;
 }
-
-img {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  object-fit: cover;
-  cursor: pointer;
-  border: 2px solid #444;
-  transition: transform 0.2s ease;
-  animation: fadeInImg 1.2s ease forwards;
-  opacity: 0;
-}
-
 .mainbar nav img:hover {
   transform: scale(1.1);
 }
 
-/* Navbar Animations */
-@keyframes navSlide {
-  0% { transform: translateY(-30px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-@keyframes fadeInText {
-  0% { transform: translateX(-20px); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
-}
-@keyframes fadeInImg {
-  0% { transform: scale(0.8); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
-}
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
 /* =======================
-   MAIN CONTAINER
+   MAIN CONTENT
 ======================= */
 .main-container {
   flex: 1;
@@ -95,30 +58,18 @@ img {
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding-bottom: 160px; /* for fixed bottom input */
-  animation: fadeInUp 0.8s ease forwards;
-  opacity: 0;
-}
-@keyframes fadeInUp {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  padding-bottom: 160px; 
 }
 
-/* =======================
-   GREETING
-======================= */
 .greet {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
 }
 .greet p {
   margin: 8px 0;
   font-size: 20px;
   color: rgba(255,255,255,0.6);
-  text-align: center;
 }
 .greet span {
   font-weight: 700;
@@ -128,9 +79,7 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
-/* =======================
-   CARDS
-======================= */
+/* Cards */
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
@@ -147,55 +96,14 @@ img {
   justify-content: space-between;
   cursor: pointer;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
-  animation: fadeInUp 1s ease forwards;
-  opacity: 0;
 }
-.card p {
-  font-size: 16px;
-  font-weight: 600;
-  margin: 0;
-  color: #fff;
-}
-.card svg {
-  font-size: 28px;
-  color: #fff;
-  align-self: flex-end;
-}
+.card p { font-size: 16px; font-weight: 600; color: #fff; }
 .card:hover {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 10px 20px rgba(0,0,0,0.6);
 }
 
-/* =======================
-   RESULT SECTION
-======================= */
-.result-box {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin: 20px 0;
-}
-
-.result-title {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.result-title img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #444;
-}
-.result-title p {
-  margin: 0;
-  font-weight: 600;
-  color: #fff;
-  font-size: 16px;
-}
-
-/* Scrollable result content */
+/* Result Section */
 .result-data {
   width: 100%;
   max-height: 50vh; 
@@ -203,60 +111,11 @@ img {
   padding: 20px;
   border-radius: 8px;
   background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(6px);
   color: #fff;
   line-height: 1.6;
 }
-.result-data::-webkit-scrollbar {
-  width: 6px;
-}
-.result-data::-webkit-scrollbar-thumb {
-  background: rgba(255,255,255,0.3);
-  border-radius: 10px;
-}
-.result-data::-webkit-scrollbar-track {
-  background: transparent;
-}
 
-.result-bubble {
-  background-color: #2A2B2E;
-  color: #fff;
-  padding: 14px 18px;
-  border-radius: 16px;
-  max-width: 100%;
-  font-size: 16px;
-  line-height: 1.5;
-  word-wrap: break-word;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-/* =======================
-   LOADER
-======================= */
-.loader {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-.loader hr {
-  width: 0%;
-  height: 4px;
-  background:linear-gradient(to right, #9ed7ff,#fff,#9ed7ff);
-  border: none;
-  border-radius: 2px;
-  animation: loadLine 1s forwards infinite;
-}
-.loader hr:nth-child(2) { animation-delay: 0.3s; }
-.loader hr:nth-child(3) { animation-delay: 0.6s; }
-@keyframes loadLine {
-  0% { width: 0%; opacity: 0.5; }
-  100% { width: 100%; opacity: 1; }
-}
-
-/* =======================
-   BOTTOM INPUT
-======================= */
+/* Input Bottom */
 .main-bottom {
   position: fixed;
   bottom: 20px;
@@ -289,67 +148,23 @@ img {
   color: #fff;
   font-size: 16px;
   resize: none;
-  max-height: 120px;
-  overflow-y: auto;
   min-height: 36px;
 }
-.text-box textarea::placeholder {
-  color: rgba(255,255,255,0.5);
-}
-.text-box svg {
-  font-size: 24px;
-  color: #00c3ff;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.text-box svg:hover {
-  transform: scale(1.1);
-}
-.bottom-info {
-  font-size: 12px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.4;
-  text-align: center;
-  max-width: 600px;
-}
 
-
-/* responsive */
+/* =======================
+   RESPONSIVE FIX
+======================= */
 @media (max-width: 768px) {
-  .mainbar { 
-    padding: 15px 20px; 
-    flex: 1; 
-    min-width: 0; /* sidebar ke sath squeeze issue fix */
-  }
+  .mainbar { padding: 15px; }
   .mainbar nav h2 { font-size: 22px; }
   .mainbar nav img { width: 40px; height: 40px; }
   .greet span { font-size: 32px; }
-  .greet p { font-size: 16px; }
-  .cards { display: none; }
-  .main-bottom { 
-    width: 100%; 
-    bottom: 15px; 
-    padding: 0 15px; 
-    max-width: 100%; /* prevent cut-off */
-  }
-  .text-box { max-width: 100%; }
-  .text-box textarea { font-size: 14px; }
-  .bottom-info { font-size: 11px; max-width: 100%; padding: 0 10px; }
-  .result-data { max-height: 48vh; }
+  .cards { display: none; } /* hide cards on small screen */
+  .main-bottom { max-width: 100%; padding: 0 15px; }
 }
-
 @media (max-width: 480px) {
-  .mainbar { 
-    padding: 10px 12px; 
-    flex: 1; 
-    min-width: 0; 
-  }
+  .mainbar { padding: 10px; }
   .mainbar nav h2 { font-size: 20px; }
-  .greet span { font-size: 28px; }
-  .greet p { font-size: 14px; }
+  .greet span { font-size: 26px; }
   .text-box textarea { font-size: 14px; }
-  .bottom-info { font-size: 10px; }
-  .result-bubble { font-size: 14px; }
-  .result-title img, .result-data img { width: 28px; height: 28px; }
-  .result-data { max-height: 48vh; }
 }
