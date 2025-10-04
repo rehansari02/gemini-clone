@@ -8,7 +8,7 @@ import { FiClock } from "react-icons/fi";
 import { useAppContext } from "../../Context/Context";
 
 function Sidebar() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleSidebar = () => setIsOpen(!isOpen);
 
