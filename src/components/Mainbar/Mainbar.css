@@ -313,28 +313,37 @@ img {
   max-width: 600px;
 }
 
-/* =======================
-   RESPONSIVE
-======================= */
+
+/* responsive */
 @media (max-width: 768px) {
-  .mainbar { padding: 15px 20px; }
+  .mainbar { 
+    padding: 15px 20px; 
+    flex: 1; 
+    min-width: 0; /* sidebar ke sath squeeze issue fix */
+  }
   .mainbar nav h2 { font-size: 22px; }
   .mainbar nav img { width: 40px; height: 40px; }
   .greet span { font-size: 32px; }
   .greet p { font-size: 16px; }
   .cards { display: none; }
-  .main-bottom { width: 100%; bottom: 15px; padding: 0 15px; }
+  .main-bottom { 
+    width: 100%; 
+    bottom: 15px; 
+    padding: 0 15px; 
+    max-width: 100%; /* prevent cut-off */
+  }
   .text-box { max-width: 100%; }
   .text-box textarea { font-size: 14px; }
   .bottom-info { font-size: 11px; max-width: 100%; padding: 0 10px; }
-  .result-data {
-
-  max-height: 48vh; 
-
- 
+  .result-data { max-height: 48vh; }
 }
-}
+
 @media (max-width: 480px) {
+  .mainbar { 
+    padding: 10px 12px; 
+    flex: 1; 
+    min-width: 0; 
+  }
   .mainbar nav h2 { font-size: 20px; }
   .greet span { font-size: 28px; }
   .greet p { font-size: 14px; }
@@ -342,10 +351,5 @@ img {
   .bottom-info { font-size: 10px; }
   .result-bubble { font-size: 14px; }
   .result-title img, .result-data img { width: 28px; height: 28px; }
-    .result-data {
-
-  max-height: 48vh; 
-
- 
-}
+  .result-data { max-height: 48vh; }
 }
